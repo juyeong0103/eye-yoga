@@ -31,7 +31,7 @@ class NoticeScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => NextScreen()),
                     );
                   },
-                  
+
                   // 다음 버튼
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -54,7 +54,7 @@ class NextScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Eye Yoga')),
-      body: Center(child: Text('다음 화면 입니다.')),
+      body: Center(child: Text('본 운동 시작 전 준비운동이 시작됩니다.')),
     );
   }
 }
