@@ -2,19 +2,23 @@ import 'package:eye_exercise/screen/notice.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: EyeYogaScreen(),
     );
   }
 }
 
 class EyeYogaScreen extends StatefulWidget {
+  const EyeYogaScreen({super.key});
+  
   @override
   _EyeYogaScreenState createState() => _EyeYogaScreenState();
 }
@@ -38,10 +42,12 @@ class _EyeYogaScreenState extends State<EyeYogaScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Eye Yoga'),
         centerTitle: true,
+        title: const Text(
+          'Eye Yoga',
+        ),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Eye Yoga',
           style: TextStyle(
