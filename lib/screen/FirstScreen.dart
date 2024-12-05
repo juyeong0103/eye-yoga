@@ -1,53 +1,28 @@
-import 'dart:async';
 import 'package:eye_exercise/screen/SecondScreen.dart';
 import 'package:flutter/material.dart';
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({super.key});
-
-  @override
-  State<FirstScreen> createState() => _FirstScreen();
-}
-
-class _FirstScreen extends State<FirstScreen> {
-  int totalTime = 20;
-  late Timer timer;
-  bool isRunning = false;
-
-  void onTick(Timer timer) {
-    if (totalTime == 0) {
-      setState(() {
-        totalTime += 1;
-        isRunning = false;
-      });
-      timer.cancel();
-    } else {
-      setState(() {
-        totalTime -= 1;
-      });
-    }
-  }
-
-  void onStartPressed() {
-    timer = Timer.periodic(const Duration(seconds: 1), onTick);
-    setState(() {
-      isRunning = true;
-    });
-  }
-
-  void onPausePressed() {
-    timer.cancel();
-    setState(() {
-      isRunning = false;
-    });
-  }
+class NextScreen extends StatelessWidget {
+  const NextScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Eye Yoga')),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 450),
+          const SizedBox(height: 125),
+          const Center(
+            child: Text(
+              '본 운동 시작 전 준비운동이 시작됩니다.',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: 250),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -86,17 +61,18 @@ class _FirstScreen extends State<FirstScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SecondScreen()),
+                    MaterialPageRoute(builder: (context) => const FirstScreen()),
                   );
                 },
+                
                 // 다음 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text('다음'),
+                    Text('준비 시작'),
                     Icon(
                       Icons.arrow_forward,
-                      size: 30,
+                      size: 20,
                       ),
                   ],
                 ),
@@ -104,8 +80,7 @@ class _FirstScreen extends State<FirstScreen> {
             ],
           ),
         ],
-      )
+      ),
     );
   }
-
 }

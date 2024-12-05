@@ -1,8 +1,7 @@
-import 'package:eye_exercise/screen/FirstScreen.dart';
 import 'package:flutter/material.dart';
 
-class NextScreen extends StatelessWidget {
-  const NextScreen({super.key});
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +10,7 @@ class NextScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 250),
-          const Center(
-            child: Text(
-              '본 운동 시작 전 준비운동이 시작됩니다.',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(height: 450),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -34,34 +20,33 @@ class NextScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pop(
-                    context
-                  );
+                  Navigator.pop(context);
                 },
-                // 다음 버튼
+                // 이전 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Icon(
                       Icons.arrow_back,
                       size: 30,
-                      ),
+                    ),
                     Text('이전'),
                   ],
                 ),
               ),
-              const SizedBox(width: 200),
+              const SizedBox(width: 250),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    ),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const FirstScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const SecondScreen()),
                   );
                 },
                 // 다음 버튼
@@ -72,7 +57,7 @@ class NextScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward,
                       size: 30,
-                      ),
+                    ),
                   ],
                 ),
               ),

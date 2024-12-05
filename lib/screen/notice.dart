@@ -1,4 +1,4 @@
-import 'package:eye_exercise/screen/NextScreen.dart';
+import 'package:eye_exercise/screen/FirstScreen.dart';
 import 'package:flutter/material.dart';
 
 // 1-2 안내문 읽기 화면
@@ -18,7 +18,7 @@ class NoticeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(height: 350),
+                const SizedBox(height: 150),
                 const Text(
                   '이 앱은 사용자의 안구 운동을 도와주는 앱 입니다.',
                   style: TextStyle(
