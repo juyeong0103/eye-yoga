@@ -18,11 +18,11 @@ class _SecondScreenState extends State<SecondScreen> {
   void onTick(Timer timer) {
     if (totalTime == 0) {
       setState(() {
-        totalTime += 1;
         isRunning = false;
       });
       timer.cancel();
-    } else {
+    } 
+    else {
       setState(() {
         totalTime -= 1;
       });
