@@ -16,8 +16,8 @@ class ThirdScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "눈을 깜빡이세요.",
+                  const Text(
+                    "안구 운동 단계를 시작합니다.",
                     style: const TextStyle(
                       fontSize: 50,
                       fontWeight: FontWeight.bold,

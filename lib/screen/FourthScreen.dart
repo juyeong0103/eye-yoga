@@ -1,4 +1,4 @@
-import 'package:eye_exercise/screen/ThirdScreen.dart';
+import 'package:eye_exercise/screen/FifthScreen.dart';
 import 'package:flutter/material.dart';
 
 class FourthScreen extends StatelessWidget {
@@ -17,9 +17,9 @@ class FourthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "안구 운동을 시작합니다.",
+                    "시계 방향으로 안구(눈동자)를 돌리세요.",
                     style: const TextStyle(
-                      fontSize: 50,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
@@ -59,14 +59,14 @@ class FourthScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ThirdScreen()),
+                            builder: (context) => const Fifthscreen()),
                       );
                     },
                     // 다음 버튼
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text('다음 단계'),
+                        Text('운동 시작'),
                         Icon(
                           Icons.arrow_forward,
                           size: 30,
