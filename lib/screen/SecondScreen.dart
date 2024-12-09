@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:eye_exercise/screen/ThirdScreen.dart';
 import 'package:flutter/material.dart';
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({super.key});
+class SecondScreen extends StatefulWidget {
+  const SecondScreen({super.key});
 
   @override
-  State<FirstScreen> createState() => _FirstScreen();
+  State<SecondScreen> createState() => _SecondScreenState();
 }
 
-class _FirstScreen extends State<FirstScreen> {
+class _SecondScreenState extends State<SecondScreen> {
   int totalTime = 20;
   late Timer timer;
   bool isRunning = false;
@@ -55,7 +55,7 @@ class _FirstScreen extends State<FirstScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "눈을 깜빡이세요.",
                 style: const TextStyle(
                   fontSize: 50,
@@ -112,7 +112,7 @@ class _FirstScreen extends State<FirstScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SecondScreen()),
+                    MaterialPageRoute(builder: (context) => const ThirdScreen()),
                   );
                 },
                 // 다음 버튼

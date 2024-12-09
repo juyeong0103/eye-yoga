@@ -61,7 +61,7 @@ class NextScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const FirstScreen()),
+                    MaterialPageRoute(builder: (context) => const SecondScreen()),
                   );
                 },
                 
