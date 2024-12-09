@@ -20,7 +20,7 @@ class EyeYogaScreen extends StatefulWidget {
   const EyeYogaScreen({super.key});
   
   @override
-  _EyeYogaScreenState createState() => _EyeYogaScreenState();
+  State<EyeYogaScreen> createState() => _EyeYogaScreenState();
 }
 
 // 1-1 첫화면 (앱 실행) => 1-2 화면으로 로딩 2초 구현
