@@ -4,7 +4,9 @@ import 'package:eye_exercise/screen/ThirdScreen.dart';
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key});
+  final int totalTime;
+
+  const SecondScreen({super.key, required this.totalTime});
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
@@ -18,14 +20,14 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 1), onTick);
-    isRunning = true;
+    totalTime = widget.totalTime;
+    onStartPressed();
   }
 
   void onTick(Timer timer) {
     if (totalTime == 0) {
       setState(() {
-        isRunning = false;
+        isRunning = true;
       });
       timer.cancel();
     } else {
@@ -57,14 +59,13 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(title: const Text('Eye Yoga')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
                 "눈을 깜빡이세요.",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
@@ -75,6 +76,29 @@ class _SecondScreenState extends State<SecondScreen> {
                 style:
                     const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (!isRunning) {
+                    setState(() {
+                      totalTime = 20;
+                      isRunning = true;
+                    });
+                    timer = Timer.periodic(const Duration(seconds: 1), onTick);
+                  } else {
+                    setState(() {
+                      isRunning = false;
+                    });
+                    timer.cancel();
+                  }
+                },
+                child: Text(
+                  isRunning ? '일시 정지' : '준비 시작',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(200, 50),
+                ),
               ),
             ],
           ),
@@ -112,13 +136,14 @@ class _SecondScreenState extends State<SecondScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const ThirdScreen()),
+                    MaterialPageRoute(builder: (context) => ThirdScreen()),
                   );
                 },
+
                 // 다음 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,

@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 class NextScreen extends StatelessWidget {
   const NextScreen({super.key});
 
+  void onStartPressed(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SecondScreen(totalTime: 20),
+      ),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +43,16 @@ class NextScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pop(
-                    context
-                  );
+                  Navigator.pop(context);
                 },
-                // 다음 버튼
+                // 이전 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Icon(
                       Icons.arrow_back,
                       size: 30,
-                      ),
+                    ),
                     Text('이전'),
                   ],
                 ),
@@ -56,24 +63,25 @@ class NextScreen extends StatelessWidget {
                   textStyle: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    ),
+                  ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SecondScreen()),
-                  );
-                },
-                
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SecondScreen(totalTime: 20),
+                            ),
+                      );
+                    },
                 // 다음 버튼
                 child: const Row(
-                  mainAxisSize: MainAxisSize.min,
+                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text('준비 시작'),
                     Icon(
                       Icons.arrow_forward,
-                      size: 20,
-                      ),
+                      size: 30,
+                    ),
                   ],
                 ),
               ),
