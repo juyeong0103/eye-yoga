@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:eye_exercise/screen/ThirdScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class SecondScreen extends StatefulWidget {
-  final int totalTime;
-
-  const SecondScreen({super.key, required this.totalTime});
+  const SecondScreen({super.key});
 
   @override
   State<SecondScreen> createState() => _SecondScreenState();
@@ -16,10 +15,34 @@ class _SecondScreenState extends State<SecondScreen> {
   int totalTime = 20;
   late Timer timer;
   bool isRunning = false;
+  late AudioPlayer _audioPlayer;
+  
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayer = AudioPlayer();
+    _audioPlayer.setReleaseMode(ReleaseMode.stop);
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  void _playSound() async {
+    try {
+      await _audioPlayer.play(AssetSource("1.mp3"));
+      print("실행 성공");
+    } catch (e) {
+      print("실행 실패");
+    }
+  }
 
   void onTick(Timer timer) {
     if (totalTime == 0) {
       setState(() {
+        _playSound();
         isRunning = false;
       });
       timer.cancel();
@@ -93,7 +116,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 // 이전 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
+                  children: [
                     Icon(
                       Icons.arrow_back,
                       size: 30,
@@ -118,21 +141,23 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
 
                 onPressed: () {
+                  if (isRunning) {
+                    timer.cancel();
+                  }
                   setState((){
                     totalTime = 20;
                     isRunning = false;
-                    timer.cancel();
                   });
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ThirdScreen()),
-                  );
+                    MaterialPageRoute(builder: (context) => const ThirdScreen())
+                    );
                 },
 
                 // 다음 버튼
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
+                  children: [
                     Text('다음'),
                     Icon(
                       Icons.arrow_forward,

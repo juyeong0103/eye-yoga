@@ -4,14 +4,6 @@ import 'package:flutter/material.dart';
 class NextScreen extends StatelessWidget {
   const NextScreen({super.key});
 
-  void onStartPressed(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SecondScreen(totalTime: 20),
-      ),
-      );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +61,7 @@ class NextScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SecondScreen(totalTime: 20),
+                            builder: (context) => const SecondScreen(),
                             ),
                       );
                     },

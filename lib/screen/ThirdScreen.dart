@@ -11,75 +11,76 @@ class ThirdScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "안구 운동 단계를 시작합니다.",
+          const SizedBox(height: 125),
+          const Center(
+                  child: Text(
+                    "안구 운동을 시작합니다.",
                     style: TextStyle(
-                      fontSize: 50,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    // 이전 버튼
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                        ),
-                        Text('이전'),
-                      ],
-                    ),
+          ),
+          const SizedBox(height: 250),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  textStyle: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(width: 250),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                // 이전 버튼
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.arrow_back,
+                      size: 30,
                     ),
-                    onPressed: () {
+                    Text('이전'),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 200),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  textStyle: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => FourthScreen()),
+                            builder: (context) => const FourthScreen(),
+                            ),
                       );
                     },
-                    // 다음 버튼
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text('다음 단계'),
-                        Icon(
-                          Icons.arrow_forward,
-                          size: 30,
-                        ),
-                      ],
+                // 다음 버튼
+                child: const Row(
+                   mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text('다음'),
+                    Icon(
+                      Icons.arrow_forward,
+                      size: 30,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
-        ],
-      ),
+                ],
+              ),
+            
     );
   }
 }
