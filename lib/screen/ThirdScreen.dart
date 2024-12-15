@@ -18,7 +18,7 @@ class ThirdScreen extends StatelessWidget {
                 children: [
                   const Text(
                     "안구 운동 단계를 시작합니다.",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                     ),

@@ -77,7 +77,7 @@ class NextScreen extends StatelessWidget {
                 child: const Row(
                    mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text('준비 시작'),
+                    Text('다음'),
                     Icon(
                       Icons.arrow_forward,
                       size: 30,

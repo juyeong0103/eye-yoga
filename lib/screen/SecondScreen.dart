@@ -17,17 +17,10 @@ class _SecondScreenState extends State<SecondScreen> {
   late Timer timer;
   bool isRunning = false;
 
-  @override
-  void initState() {
-    super.initState();
-    totalTime = widget.totalTime;
-    onStartPressed();
-  }
-
   void onTick(Timer timer) {
     if (totalTime == 0) {
       setState(() {
-        isRunning = true;
+        isRunning = false;
       });
       timer.cancel();
     } else {
@@ -78,26 +71,13 @@ class _SecondScreenState extends State<SecondScreen> {
                 textAlign: TextAlign.center,
               ),
               ElevatedButton(
-                onPressed: () {
-                  if (!isRunning) {
-                    setState(() {
-                      totalTime = 20;
-                      isRunning = true;
-                    });
-                    timer = Timer.periodic(const Duration(seconds: 1), onTick);
-                  } else {
-                    setState(() {
-                      isRunning = false;
-                    });
-                    timer.cancel();
-                  }
-                },
-                child: Text(
-                  isRunning ? '일시 정지' : '준비 시작',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
+                onPressed: isRunning ? onPausePressed : onStartPressed,
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(200, 50),
+                ),
+                child: Text(
+                  isRunning ? '일시 정지' : '타이머 시작',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -138,6 +118,11 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
 
                 onPressed: () {
+                  setState((){
+                    totalTime = 20;
+                    isRunning = false;
+                    timer.cancel();
+                  });
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ThirdScreen()),
